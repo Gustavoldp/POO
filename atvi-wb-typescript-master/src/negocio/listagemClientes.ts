@@ -1,0 +1,32 @@
+import Cliente from "../modelo/cliente";
+import Listagem from "./listagem";
+
+export default class ListagemClientes extends Listagem {
+    private clientes: Array<Cliente>
+    constructor(clientes: Array<Cliente>) {
+        super()
+        this.clientes = clientes
+    }
+    public listar(): void {
+        console.log(`\nLista de todos os clientes:`);
+        this.clientes.forEach(cliente => {
+            console.log(`Nome: ` + cliente.nome);
+            console.log(`Nome social: ` + cliente.nomeSocial);
+            console.log(`Sexo: ` + cliente.genero);
+            console.log(`CPF: ` + cliente.getCpf);
+            cliente.getRgs.forEach(rg => {
+                console.log(`RG: ` + rg.getValor );
+            })
+            console.log(`Produtos consumidos: [ `)
+            cliente.getProdutosConsumidos.forEach(prod => {
+                console.log('      '+ prod.nome + ']')
+            });
+            console.log(`Serviços consumidos: [ `)
+            cliente.getServicosConsumidos.forEach(ser => {
+                console.log('      '+ ser.nome + ']');
+            });
+            console.log(`----------------------------------------------------------`);
+        });
+        console.log(`\n`);
+    }
+}
